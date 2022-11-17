@@ -21,24 +21,24 @@ class HomeController extends AbstractController
     public function index(? string $text_to_translate, ? string $text_translated, ? string $source_lang,? string $target_lang): Response
     {
       //limit=136 character;
-      $tab_lang=json_decode(file_get_contents($this->getParameter('kernel.project_dir').'/public/lang.code.json'),true);
+      //$tab_lang=json_decode(file_get_contents($this->getParameter('kernel.project_dir').'/public/lang.code.json'),true);
       
-
+      $tab_lang=json_decode(file_get_contents($this->getParameter('lang_json')));
       
       if($source_lang && $target_lang)
       {
 
-        foreach($tab_lang['lang'] as $tb)
+        foreach($tab_lang->lang as $tb)
         {
            
-            if($tb['name'] == $source_lang)
+            if($tb->name == $source_lang)
             {
-               $leftLang= array_unique(array_merge(array('0'=>$tb),$tab_lang['lang']),SORT_REGULAR);
+               $leftLang= array_unique(array_merge(array('0'=>$tb),$tab_lang->lang),SORT_REGULAR);
             }
 
-            if($tb['name'] == $target_lang)
+            if($tb->name == $target_lang)
             {
-                $rightLang= array_unique(array_merge(array('0'=>$tb),$tab_lang['lang']),SORT_REGULAR);
+                $rightLang= array_unique(array_merge(array('0'=>$tb),$tab_lang->lang),SORT_REGULAR);
             }
         }
        
@@ -46,8 +46,10 @@ class HomeController extends AbstractController
 
       else 
       {
-        $leftLang=$tab_lang['lang'];
-        $rightLang=array_reverse($tab_lang['lang'],true);
+        //stdclass to array
+
+        $leftLang=$tab_lang->lang;
+        $rightLang=array_reverse($tab_lang->lang,true);
       }
 
     

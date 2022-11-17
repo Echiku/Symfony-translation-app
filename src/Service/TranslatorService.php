@@ -18,17 +18,19 @@ class TranslatorService
     public function translation($LeftLang,$rightLang,$textSend): string
     {
         //Json Language file
-        $tab_lang=json_decode(file_get_contents($this->params->get('kernel.project_dir').'/public/lang.code.json'),true);
+        $tab_lang=json_decode(file_get_contents($this->params->get('lang_json')));
          
         $lang_source=$LeftLang;
 
          //get the value correspondant
-
-         foreach($tab_lang['lang'] as $tab)
+           
+         foreach($tab_lang->lang as $tab)
          {
-            if($tab['name'] ==$lang_source)
+            
+           
+            if($tab->name ==$lang_source)
                 {
-                  $lang_source=$tab['code'];
+                  $lang_source=$tab->code;
                   
                 }
            
@@ -38,11 +40,11 @@ class TranslatorService
          $lang_target=$rightLang;
          //get the value correspondant
 
-         foreach($tab_lang['lang'] as $tab)
+         foreach($tab_lang->lang as $tab)
          {
-            if($tab['name'] ==$lang_target)
+            if($tab->name ==$lang_target)
             {
-              $lang_target=$tab['code'];
+              $lang_target=$tab->code;
               
             }
            
