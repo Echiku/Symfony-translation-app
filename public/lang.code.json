@@ -1,0 +1,28 @@
+{
+    "lang":[
+    {
+        "id":1,
+        "name":"French",
+        "code":"fr"
+    },
+   
+   
+        {
+        "id":2,
+        "name":"Afrikaans",
+        "code":"af"
+    },
+
+
+   
+
+    {
+        "id":3,
+        "name":"English",
+        "code":"en"
+    }
+
+  ]
+
+
+}
