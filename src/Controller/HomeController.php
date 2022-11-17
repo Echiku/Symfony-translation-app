@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Service\TranslatorService;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
